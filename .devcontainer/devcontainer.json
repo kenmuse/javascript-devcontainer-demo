@@ -1,0 +1,46 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.245.0/containers/typescript-node
+{
+	"name": "ExpressApp",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"shutdownAction": "stopCompose",
+	"workspaceFolder": "/workspace",
+
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"dbaeumer.vscode-eslint",
+				"tomoki1207.pdf",
+				"ms-azuretools.vscode-docker",
+				"EditorConfig.EditorConfig",
+				"jbockle.jbockle-format-files"
+			]
+		}
+	},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [ 
+		"redis-stack:8001"
+	],
+	"portsAttributes": {
+		"8000": {
+			"label": "Express",
+			"onAutoForward": "notify"
+		},
+		"redis-stack:8001": {
+			"label": "Redis Dashboard",
+			"onAutoForward": "silent"
+		}
+	},
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "sudo chown node node_modules && npm i",
+	"postStartCommand": "git config --global --add safe.directory /workspace",
+
+	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "node"
+}

@@ -1,0 +1,30 @@
+version: "3.8"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    init: true
+    volumes:
+      - ..:/workspace:cached
+      - node_modules:/workspace/node_modules
+    container_name: express
+    command: "sleep infinity"
+    depends_on:
+      - redis-stack
+    environment:
+      - PORT=8000
+  
+  redis-stack:
+    image: redis/redis-stack:latest
+    volumes:
+     - redis-data:/data
+    expose:
+      - 6379
+    ports:
+      - 8001
+    restart: on-failure
+
+volumes:
+ redis-data:
+ node_modules:
