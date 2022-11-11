@@ -5,7 +5,7 @@
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "app",
 	"shutdownAction": "stopCompose",
-	"workspaceFolder": "/workspace",
+	"workspaceFolder": "/workspaces/demo",
 
 	// Configure tool-specific properties.
 	"customizations": {

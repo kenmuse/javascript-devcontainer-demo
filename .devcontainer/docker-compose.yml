@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
     init: true
     volumes:
-      - ..:/workspace:cached
+      - ..:/workspaces/demo:cached
       - jsc-node_modules:/workspace/node_modules
     container_name: jsc-express
     command: "sleep infinity"
