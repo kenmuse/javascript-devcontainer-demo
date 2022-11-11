@@ -1,0 +1,20 @@
+{
+  "preset": "ts-jest/presets/js-with-ts",
+  "globals": {
+    "ts-jest" : {
+      "tsconfig": "tsconfig.json",
+      "useESM": true
+    }
+  },
+  "extensionsToTreatAsEsm": [".ts", ".mts"],
+  "moduleFileExtensions": ["ts", "mts", "js", "jts"],
+  "testRegex": "(/tests/.*|\\.(test|spec))\\.(ts|tsx|js|mts)$",
+  "transform": {
+    "^.+\\.(js|jsx|ts|tsx|mjs|mts)$": "ts-jest"
+  },
+  "testEnvironment": "node",
+  "moduleNameMapper": {
+    "^(\\.{1,2}/.*)\\.mjs$": "$1.mts"
+  }
+}
+
