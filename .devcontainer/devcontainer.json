@@ -20,7 +20,7 @@
 	},
 
 	"mounts": [
-		"source=express-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume"
+		"source=jsdemo-express-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume"
 	],
 
 	"remoteEnv": {
