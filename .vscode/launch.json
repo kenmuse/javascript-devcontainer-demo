@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "name": "Dev Debug",
+            "type": "node",
+            "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+            "request": "launch",
+            "cwd": "${workspaceRoot}",
+            "preLaunchTask": "Watch",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "run-script", "start"
+            ],
+        }
+    ]
+
+}
