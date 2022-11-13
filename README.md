@@ -22,6 +22,8 @@ The application is a basic TypeScript web application running on Node.js (18.x).
 
 By default, the application uses an in-memory counter. The application state is lost when the application is restarted. If Redis is available (such as when Docker Compose is used), it will be used to store the counter state. In this case, the count is preserved between restarts.
 
+A configuration file is provided which configures code debugging in Visual Studio Code, allowing you to step into the application and set breakpoints.
+
 ## Compatibility
 
 The images used (`18-bullseye` and `alpine`) support both Intel and ARM64 devices. This enables the containers to use the native processor in both local and cloud environments.
