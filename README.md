@@ -8,6 +8,7 @@ There are multiple branches in this repository. Each represents a different cont
 
 - `main`. Default branch. Contains a simple JavaScript application with no container configuration. This provides a baseline for development and allows Codespaces to be used with the default Codespaces universal container. 
 - `bare`. Same content as `main` for ease of comparison if you are creating and customizing your own container.
+- `image`. The default configuration created by VS Code 1.73.1+. This references an image and does not use a local Dockerfile for configuration.
 - `alpine`. A minimal container using Alpine. Alpine does not support users, so it runs as `root`. 
 - `dockerfile`. Uses the default Dockerfile configuration created by older versions of VS Code.
 - `compose`. Development container using Docker Compose for the development environment and a Redis stack server.
@@ -31,6 +32,20 @@ The images used (`18-bullseye` and `alpine`) support both Intel and ARM64 device
 ## Configuration Details
 
 This provides detail about the configuration files (`.devcontainer/devcontainer.json`) used by each branch.
+
+### Main
+
+A code-only branch that can be used as a starting point for creating and using dev containers.
+
+### Bare
+
+The code-only branch. There is no dev container. It is identical to `main`, making it useful for comparisons if `main` is altered.
+
+### Image
+
+The default configuration for a dev container for Node.js. This configuration is unmodified and creates a working environment for developing with Node.js. The complete workspace is mounted, so changes in the container are persisted to the host. 
+
+This container can generate a warning when using Git operations: `Git: fatal: detected dubious ownership in repository`. This can be corrected by automatically configuring the workspaces folder as a safe directory in your dotfiles repository or using code. The code approach is used for the non-default images.
 
 ### Alpine
 
@@ -61,7 +76,7 @@ The `.vscode` folder contains the launch configuration for debugging. In additio
 
 ### Dockerfile
 
-This is similar to `alpine`, but using the larger developer image provided by Microsoft. It also includes `netcat` and `redis-tools` to support an optional Redis instance.
+This is similar to `alpine`, but using the larger developer image provided by Microsoft. It also includes `netcat` and `redis-tools` to support interactions with an optional external Redis instance.
 
 The container runs as the user `node` with reduced privileges. Because volume mounts are created using a privileged identity, the `node_modules` mount will initially be created as `root`. This would prevent Node.js from successfully installing any packages. To avoid this, `postCreateCommand` uses `chown` to change the folder's owner to `node`.
 
