@@ -22,6 +22,10 @@
 		}
 	},
 
+	"remoteEnv": {
+		"PORT": "8000"
+	},
+
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [ 
 		"redis-stack:8001"

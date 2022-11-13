@@ -8,12 +8,12 @@ services:
     volumes:
       - ..:/workspaces/demo:cached
       - jsc-node_modules:/workspace/node_modules
+    tmpfs:
+      - /workspace/dist:rw,noexec,nosuid,size=10M
     container_name: jsc-express
     command: "sleep infinity"
     depends_on:
       - redis-stack
-    environment:
-      - PORT=8000
   
   redis-stack:
     image: redis/redis-stack:latest
