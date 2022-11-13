@@ -12,7 +12,6 @@ There are multiple branches in this repository. Each represents a different cont
 - `alpine`. A minimal container using Alpine. Alpine does not support users, so it runs as `root`. 
 - `dockerfile`. Uses the default Dockerfile configuration created by older versions of VS Code.
 - `compose`. Development container using Docker Compose for the development environment and a Redis stack server.
-- `compose-enhanced`. Variant of `compose` with additional mount configuration.
 
 ## Application
 
@@ -91,4 +90,4 @@ The container includes two additional VS Code extensions:
 - `EditorConfig.EditorConfig`. Enables VS Code to use the `.editorconfig` file to enforce coding standards
 - `jbockle.jbockle-format-files`. Enables VS Code to format all files in the workspace.
 
-The environment variable, `PORT` is created in the `docker-compose.xml`. In addition, the mounts are defined in the same file.
+The mounts are defined in the `docker-compose.xml`.
