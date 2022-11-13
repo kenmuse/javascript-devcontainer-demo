@@ -20,7 +20,8 @@
 	},
 
 	"mounts": [
-		"source=jsdemo-express-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume"
+		"source=jsdemo-express-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume",
+		"type=tmpfs,destination=${containerWorkspaceFolder}/dist"
 	],
 
 	"remoteEnv": {
@@ -37,9 +38,8 @@
 		}
 	},
 
-	// Use 'postCreateCommand' to run commands after the container is created.
+	"onCreateCommand": "rm -rf ${containerWorkspaceFolder}/dist/*",
 	"postCreateCommand": "sudo chown node node_modules && npm i",
-
 	"postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
 
 	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
